@@ -1,0 +1,30 @@
+.entries{
+	margin: 10px;
+}
+
+.entries img{
+	margin-right:20px;
+	display:inline-block;
+}
+
+.entries .title{
+	font-size: 30px;
+	display: inline;
+	width: 200px;
+}
+.entries .description{
+	color: #999999;
+}
+
+.details{
+	display:inline-block;
+	margin-top:15px;
+}
+
+.contact{
+	font-size: x-small;
+}
+
+.contact p{
+	font-style: italic;
+}

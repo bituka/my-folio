@@ -1,0 +1,105 @@
+import webapp2
+import jinja2
+import os
+import cgi
+import datetime
+import urllib
+import sys
+
+from google.appengine.ext import db
+from google.appengine.api import images
+
+
+jinja_environment = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+
+from google.appengine.api import users
+
+class Portfolio(db.Model):
+  image = db.BlobProperty()
+  title = db.StringProperty()
+  description = db.StringProperty(multiline=True)
+  date = db.DateTimeProperty(auto_now_add=True)
+
+class MainPage(webapp2.RequestHandler):
+	def get(self):       
+		self.response.headers['Content-Type'] = 'text/plain'
+		self.response.out.write('Hello')
+
+class AdminPage(webapp2.RequestHandler):
+	def get(self):       
+  
+		portfolios = db.GqlQuery("SELECT * FROM Portfolio")
+		
+		template_values = {
+            'portfolios': portfolios,
+        }
+		
+		template = jinja_environment.get_template('admin.html')
+		self.response.out.write(template.render(template_values))	
+	
+	def post(self):   
+		portfolio = Portfolio()
+		portfolio.title = self.request.get('title')		
+		portfolio.description = self.request.get('description')
+		image = self.request.get('img')
+		portfolio.image = db.Blob(image)
+		portfolio.put()
+		self.redirect('/admin')
+		
+
+class EditPortfolio(webapp2.RequestHandler):
+    def get(self):
+    
+    	portfolios = db.get(self.request.get('img_id'))
+    #  id = self.request.get('id')
+    #	self.response.out.write('test')
+    # portfolio = db.get(self.request.get('id'))
+    # self.response.out.write('test')
+    #  self.response.out.write(id)
+    #  portfolios = db.GqlQuery("SELECT * FROM Portfolio WHERE __key__ = id")
+      
+      self.response.write('<html>'
+      '<body>'
+      '<form action="/EditPortfolio" method="POST">'
+          '<input type="hidden" value="{{portfolios.id}}" name="id">'
+          'TITLE:<input type=text name=title value="{{portfolios.title}}"/>'
+          '<br>CONTENT:<input type=text name=content value="{}"/>'
+          '<br><input type=submit value="Save"/>'
+      '</form>'
+      '<form action="/DeletePortfolio" method="POST">'
+          '<input type="hidden" value="{id}" name="id">'
+          '<br><input type=submit value="delete"/>'
+      '</form>'
+      '</body>'
+  '</html>'
+          .format(title=newpost.title,content=newpost.content,id=newpost.key().id()))
+    def post(self):
+        title = self.request.get('title')
+        content = self.request.get('content')
+        id = int(self.request.get('id'))
+        newpost = BlogById(id)
+        newpost.title = title
+        newpost.content = content
+        newpost.put()
+        self.redirect('/admin')		
+       
+class Image(webapp2.RequestHandler):
+    def get(self):
+        portfolio = db.get(self.request.get('img_id'))
+        
+        if portfolio.image:
+            self.response.headers['Content-Type'] = 'image/png'
+            self.response.out.write(portfolio.image)
+        else:
+            self.error(404)   
+            
+                 
+        
+app = webapp2.WSGIApplication([('/', MainPage),
+														   ('/img', Image),
+														   ('/editportfolio', EditPortfolio),
+															 ('/admin', AdminPage),],
+                              	debug=True)
+                              
+                              

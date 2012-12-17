@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ 	<title>Admin Area</title>
+ </head>
+ <body>
+ 	 <h1>Admin Area</h1>
+   <form action="/admin" enctype="multipart/form-data" method="post">
+   <div><label>Title:</label><br /><input type="text" name="title" maxlength="50" /></div>
+   <div><label>Description:</label><br /><textarea name="description" rows="4" cols="60"></textarea></div>
+   <div><label>Pic:</label><br /><input type="file" name="img"/></div>
+   <input type="submit" value="submit">
+   </form>
+   
+   <h1>List</h1>
+   {% for portfolio in portfolios %}
+   <div><img width="200px" height="200px" src="img?img_id={{portfolio.key()}}" alt={{portfolio.key()}} /></div>
+   	<div>{{portfolio.title}}</div>
+   	<div>{{portfolio.description}}</div>
+   	
+   	<form action="/deleteportfolio" method="post">
+   	<a href="/editportfolio?id={{portfolio.key()}}">Edit</a>
+   	<input type="hidden" name="id" value="{{portfolio.key()}}" />
+   <!--	<a href="/deleteportfolio?id={{portfolio.key()}}">Delete</a> -->
+   	<input type="submit" value="Delete">
+   	</form>
+   {% endfor %}
+ </body>
+</html>

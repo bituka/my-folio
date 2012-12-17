@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Goryofolio</title>
+<!-- Bootstrap -->
+<link href="stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="stylesheets/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" href="stylesheets/main.css">
+</head>
+<body>
+	<div class="row">
+    <div class="span6">
+    <img src="/img/GoryoAvatar.jpg" />
+    </div>
+    <div class="span6" style="margin-top: 100px;">
+    <h1>Hi I'm Goryo!</h1>
+    fan of open-source and likes playing around the web...
+    <br />
+    <img src="/img/php-logo2.jpeg" />
+    <img src="/img/ci_logo_flame2.jpg" />
+    <img src="/img/python-logo-official2.png" />
+    <img src="/img/jquery_logo2.png" />
+    <br /><br />
+    <div class="contact">
+    	<div class="btn" id="contact-btn"><a href="#">Contact Me</a></div>
+    	<div class="contact-details">
+    	<p>I am also developing not only for fun but seriously as well and makes money out of it...
+    		so you want me to develop your app or join into your team? :)
+    	</p>
+    	Email me:<a href="mailto:goryo.webdev@gmail.com?Subject=Webdev%20inquiry">goryo.webdev@gmail.com</a><br /><br />
+    	<a href="https://twitter.com/goryo_kanuto" class="twitter-follow-button" data-show-count="false">Follow @goryo_kanuto</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+ 		<br />
+ 		<img src="/img/skype-logo-placeholder.png">ID: goryo_kanuto  <br />
+ 		<img src="/img/gtalk-logo.png">ID: goryo.webdev<br />
+ 		<a href="http://ph.linkedin.com/in/gkmgarcia">
+      
+          <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png" width="160" height="25" border="0" alt="View Garry Keneth Garcia's profile on LinkedIn">
+        
+    </a> 	
+    	</div>
+    </div>
+    </div>
+    </div>
+    <hr />
+    <div class="row">	
+    <div class="span8 offset1"><h3>Here is my simple showcase for you!</h3>
+	    
+	    {% for portfolio in portfolios %}      
+	    <div class="entries">	
+		    <img width="200px" height="200px" src="img?img_id={{portfolio.key()}}" alt={{portfolio.key()}} />
+		    <br />
+		    <div class="details">
+		   	<span class="title">{{portfolio.title}}</span>
+		   	<div class="description">{{portfolio.description}}</div>
+		   	</div>
+	   	</div>	
+	   	<hr />
+		{% endfor %}	
+	   
+   	</div>
+    <div class="span3">
+	
+		<a class="twitter-timeline"  href="https://twitter.com/search?q=%23webdev" data-widget-id="278341668208517121">Tweets about "#webdev"</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+	</div>	
+    
+    </div>
+    
+	
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>
