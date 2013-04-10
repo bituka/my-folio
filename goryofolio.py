@@ -20,6 +20,7 @@ class Portfolio(db.Model):
     title = db.StringProperty()
     description = db.StringProperty(multiline=True)
     date = db.DateTimeProperty(auto_now_add=True)
+    link_url = db.StringProperty()
 
 class MainPage(webapp2.RequestHandler):
     def get(self):       
@@ -55,6 +56,7 @@ class AdminPage(webapp2.RequestHandler):
         portfolio = Portfolio()
         portfolio.title = self.request.get('title')		
         portfolio.description = self.request.get('description')
+        portfolio.link_url = self.request.get('link_url')
         image = self.request.get('img')
         portfolio.image = db.Blob(image)
         portfolio.put()
@@ -78,6 +80,7 @@ class EditPortfolio(webapp2.RequestHandler):
 
         portfolio.title = self.request.get('title')        
         portfolio.description = self.request.get('description')
+        portfolio.link_url = self.request.get('link_url')
         image = self.request.get('img')
         if image:
             portfolio.image = db.Blob(image)

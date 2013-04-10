@@ -6,11 +6,21 @@
 <link href="stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="stylesheets/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 <link rel="stylesheet" href="stylesheets/main.css">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-39899512-1', 'goryofolio.appspot.com');
+  ga('send', 'pageview');
+
+</script>
 </head>
 <body>
 	<div class="row">
-    <div class="span6">
-    <img src="/img/GoryoAvatar.jpg" />
+    <div class="span5 offset1 ch-image">	
+    <img id="mainimg" src="/img/GoryoAvatar.jpg" />
     </div>
     <div class="span6" style="margin-top: 100px;">
     <h1>Hi I'm Goryo!</h1>
@@ -20,6 +30,7 @@
     <img src="/img/ci_logo_flame2.jpg" />
     <img src="/img/python-logo-official2.png" />
     <img src="/img/jquery_logo2.png" />
+    <img src="/img/wordpress-logo.png" />
     <br /><br />
     <div class="contact">
     	<div class="btn" id="contact-btn"><a href="#">Contact Me</a></div>
@@ -32,12 +43,14 @@
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
  		<br />
  		<img src="/img/skype-logo-placeholder.png">ID: goryo_kanuto  <br />
- 		<img src="/img/gtalk-logo.png">ID: goryo.webdev<br />
+ 		<img src="/img/gtalk-logo.png">ID: goryo.webdev<br /><br />
  		<a href="http://ph.linkedin.com/in/gkmgarcia">
       
           <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png" width="160" height="25" border="0" alt="View Garry Keneth Garcia's profile on LinkedIn">
         
     </a> 	
+    <br /><br />
+    <a href="https://www.odesk.com/users/~0167e63abd95c2048c"><img alt="oDesk Certified oDesk Contractor" src="https://www.odesk.com/api/exams/v1/1384469/image" /></a>
     	</div>
     </div>
     </div>
@@ -51,7 +64,7 @@
 		    <img width="200px" height="200px" src="img?img_id={{portfolio.key()}}" alt={{portfolio.key()}} />
 		    <br />
 		    <div class="details">
-		   	<span class="title">{{portfolio.title}}</span>
+		    <div class="title"><a href="{{portfolio.link_url}}" target="_blank">{{portfolio.title}}</a></div>
 		   	<div class="description">{{portfolio.description}}</div>
 		   	</div>
 	   	</div>	
