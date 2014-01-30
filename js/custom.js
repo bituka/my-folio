@@ -3,7 +3,7 @@ $("#contact-btn").click(function() {
 	$(".contact-details").slideToggle();
 	return false;
 }); 
-
+/*
 $(function() {
     $(".ch-image")
         .mouseover(function() { 
@@ -14,3 +14,4 @@ $(function() {
             
         });
 });
+*/

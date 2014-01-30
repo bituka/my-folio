@@ -1,4 +1,4 @@
-body{
+/*body{
 	font-family: 'Special Elite', cursive;
 }
 
@@ -28,4 +28,17 @@ body{
 
 .contact p{
 	font-style: italic;
+}*/
+
+
+body {
+    font-family: 'Special Elite', cursive;
+    margin-top: 50px;
+}
+footer {
+    margin: 50px 0;
+}
+
+.navbar-inverse {
+    background-image: linear-gradient(to bottom, rgb(0, 150, 60) 0px, rgb(34, 34, 34) 100%);
 }
