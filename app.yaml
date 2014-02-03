@@ -15,8 +15,14 @@ handlers:
 - url: /img
   static_dir: img
 
-- url: /.*
+- url: /
   script: goryofolio.app
+
+- url: /test
+  script: test.app
+
+- url: /.*
+  script: not_found.app
 
 libraries:                                                                      
 - name: jinja2                                                                  

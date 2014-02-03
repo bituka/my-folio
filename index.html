@@ -6,17 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>One Column Portfolio Template for Bootstrap 3</title>
-
+    
+    <title>Goryo's Portfolio</title>
+    
     <!-- Bootstrap core CSS -->
    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-
+    <!-- FONTS -->
+     <link href='http://fonts.googleapis.com/css?family=Alef' rel='stylesheet' type='text/css'>
+    
     <!-- Custom CSS for the 'Thumbnail Gallery' Template -->
     <link href="css/1-col-portfolio.css" rel="stylesheet">
     <link rel="stylesheet" href="stylesheets/main.css">
-
+    
 </head>
 
 <body>
@@ -30,11 +32,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://startbootstrap.com">Start Bootstrap</a>
+                <a class="navbar-brand" href="http://startbootstrap.com">Goryo's Portfolio</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <!-- <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="#about">About</a>
                     </li>
@@ -43,7 +45,7 @@
                     <li><a href="#contact">Contact</a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
@@ -54,107 +56,33 @@
         <div class="row">
 
             <div class="col-lg-12">
-                <h1 class="page-header">1 Col Portfolio
-                    <small>Showcase Your Work One Column at a Time</small>
+                <h1 class="page-header">Hello There!!!
+                    <small>Welcome to My Art of Code Masterpieces</small>
                 </h1>
             </div>
 
         </div>
-
+        {% for portfolio in portfolios %}   
         <div class="row">
 
             <div class="col-lg-7 col-md-7">
                 <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+                    <img class="img-responsive" src="img?img_id={{portfolio.key()}}" alt={{portfolio.key()}} >
                 </a>
             </div>
 
             <div class="col-lg-5 col-md-5">
-                <h3>Project One</h3>
-                <h4>Subheading</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <h3>{{portfolio.title}}</h3>
+              <!--  <h4>Subheading</h4> -->
+                <p>{{portfolio.description}}</p>
+               <!-- <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a> -->
             </div>
 
         </div>
 
         <hr>
-
-        <div class="row">
-
-            <div class="col-lg-7 col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-lg-5 col-md-5">
-                <h3>Project Two</h3>
-                <h4>Subheading</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-
-        </div>
-
-        <hr>
-
-        <div class="row">
-
-            <div class="col-lg-7 col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-lg-5 col-md-5">
-                <h3>Project Three</h3>
-                <h4>Subheading</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-
-        </div>
-
-        <hr>
-
-        <div class="row">
-
-            <div class="col-lg-7 col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-lg-5 col-md-5">
-                <h3>Project Four</h3>
-                <h4>Subheading</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-
-        </div>
-
-        <hr>
-
-        <div class="row">
-
-            <div class="col-lg-7 col-md-7">
-                <a href="#">
-                    <img class="img-responsive" src="http://placehold.it/700x300" alt="">
-                </a>
-            </div>
-
-            <div class="col-lg-5 col-md-5">
-                <h3>Project Five</h3>
-                <h4>Subheading</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
-            </div>
-
-        </div>
-
-        <hr>
+        {% endfor %}	
+       
 <!--
         <div class="row text-center">
 
@@ -184,7 +112,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Company 2013</p>
+                    <p>Copyright &copy; Goryo Wala Lang</p>
                 </div>
             </div>
         </footer>
