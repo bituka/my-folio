@@ -42,3 +42,7 @@ footer {
 .navbar-inverse {
     background-image: linear-gradient(to bottom, rgb(0, 150, 60) 0px, rgb(34, 34, 34) 100%);
 }
+
+#mainimg{
+  height:10%;
+}

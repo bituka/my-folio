@@ -103,7 +103,13 @@ class Image(webapp2.RequestHandler):
         else:
             self.error(404)   
             
-        
+'''
+class Test(webapp2.RequestHandler):
+  
+    def get(self):
+        self.response.out.write('test') 
+'''
+
 app = webapp2.WSGIApplication([('/', MainPage),
                                 ('/img', Image),
                                 ('/editportfolio', EditPortfolio),
