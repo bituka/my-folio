@@ -18,8 +18,8 @@ handlers:
 - url: /img
   static_dir: img
 
-- url: /testgyo
-  script: testgyo.app
+- url: /testpaginggyo
+  script: testpaginggyo.app
 
 # - url: /.*
 #  script: not_found.app

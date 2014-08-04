@@ -21,7 +21,14 @@
 </head>
 <body>
 
-   test
+  {% for aso in asos %}
+    <div>{{aso.laki}}</div>
+  {% endfor %}
+  <br><br><br>  
+  <form action="/testpaginggyo" method="post">
+
+  <input type="submit" value="submit">
+  </form>
    
    
    
