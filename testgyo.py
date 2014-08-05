@@ -24,8 +24,15 @@ class MainPage(webapp2.RequestHandler):
       
       lakis = db.GqlQuery("SELECT * FROM Aso")
 
+      myPagedQuery = PagedQuery(Aso.all(), 10)
+      myResults = myPagedQuery.fetch_page() #first page
+      myResults2 = myPagedQuery.fetch_page(2)
+
       template_values = {
-        'lakis' = lakis
+        'lakis' = lakis,
+        'myPagedQuery' = myPagedQuery,
+        'myResults' = myResults,
+        'myResults2' = myResults2
       }
 
       template = jinja_environment.get_template('test.html')

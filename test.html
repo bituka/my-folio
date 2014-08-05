@@ -25,6 +25,15 @@
     <div>{{aso.laki}}</div>
   {% endfor %}
   <br><br><br>  
+  <hr>
+  {% for result in myResults %}
+    <div>{{result.laki}}</div>
+  {% endfor %}
+
+  {{ myResults }}
+  <br><br><br>
+
+
   <form action="/testpaginggyo" method="post">
 
   <input type="submit" value="submit">
