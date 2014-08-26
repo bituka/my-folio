@@ -13,17 +13,29 @@ from google.appengine.api import users
 
 import paging.paging
 
+from paging.paging import *
+
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 class Aso(db.Model):
     laki = db.StringProperty()
 
-
+#TODO paging implem
 class MainPage(webapp2.RequestHandler):
     def get(self):          
       
-      asos = db.GqlQuery("SELECT * FROM Aso")
+      page_num = 1
+      
+      nextPageExists = myPagedQuery.has_page(page_num + 1)
+      
+      num_pages = myPagedQuery.page_count()
+      
+      myPagedQuery = PagedQuery(Aso.all(), 10)
+      
+      asos = myPagedQuery.fetch_page()
+      
+     # asos = db.GqlQuery("SELECT * FROM Aso")
 
       template_values = {
         'asos' : asos
