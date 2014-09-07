@@ -34,9 +34,12 @@ class MainPage(webapp2.RequestHandler):
         page_num = 1
       
       if nextpage: 
-        int(page_num) += 1
+        page_num = int(page_num) 
+        page_num += 1
       
-      if previouspage: page_num -= 1
+      if previouspage: 
+        page_num = int(page_num)
+        page_num -= 1
 
       myPagedQuery = PagedQuery(Aso.all(), 10)
 
