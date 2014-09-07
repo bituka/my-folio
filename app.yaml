@@ -6,8 +6,8 @@ threadsafe: true
 
 handlers:
 
-- url: /
-  script: goryofolio.app
+#- url: /
+#  script: goryofolio.app
 
 - url: /stylesheets
   static_dir: stylesheets
@@ -21,8 +21,8 @@ handlers:
 - url: /testpaginggyo
   script: testpaginggyo.app
 
-# - url: /.*
-#  script: not_found.app
+- url: /.*
+  script: goryofolio.app
 
 libraries:                                                                      
 - name: jinja2                                                                  

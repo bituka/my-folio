@@ -24,6 +24,14 @@
   {% for aso in asos %}
     <div>{{aso.laki}}</div>
   {% endfor %}
+  <br><br> 
+  {% if previousPageExists %}   
+  <a href="/testpaginggyo?previouspage={{previousPageExists}}&page_num={{page_num}}">Previous Page</a>   
+  {% endif %}   
+
+  {% if nextPageExists %}   
+  <a href="/testpaginggyo?nextpage={{nextPageExists}}&page_num={{page_num}}">Next Page</a>   
+  {% endif %}
   <br><br><br>  
   <form action="/testpaginggyo" method="post">
 

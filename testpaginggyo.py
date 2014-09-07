@@ -23,22 +23,38 @@ class Aso(db.Model):
 
 #TODO paging implem
 class MainPage(webapp2.RequestHandler):
+  
     def get(self):          
       
-      page_num = 1
+      page_num = str(self.request.get('page_num'))
+      nextpage = self.request.get('nextpage')
+      previouspage = self.request.get('previouspage')
       
+      if (not page_num) or (page_num == ' '): 
+        page_num = 1
+      
+      if nextpage: 
+        int(page_num) += 1
+      
+      if previouspage: page_num -= 1
+
+      myPagedQuery = PagedQuery(Aso.all(), 10)
+
       nextPageExists = myPagedQuery.has_page(page_num + 1)
+      previousPageExists = myPagedQuery.has_page(page_num - 1)
       
       num_pages = myPagedQuery.page_count()
       
-      myPagedQuery = PagedQuery(Aso.all(), 10)
+      asos = myPagedQuery.fetch_page(page_num)
       
-      asos = myPagedQuery.fetch_page()
-      
+
      # asos = db.GqlQuery("SELECT * FROM Aso")
 
       template_values = {
-        'asos' : asos
+        'asos' : asos,
+        'nextPageExists' : nextPageExists,
+        'previousPageExists' : previousPageExists,
+        'page_num' : page_num
       }
 
       template = jinja_environment.get_template('test.html')
