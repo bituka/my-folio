@@ -13,7 +13,6 @@ from google.appengine.api import users
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-#from google.appengine.api import users
 
 class Portfolio(db.Model):
     image = db.BlobProperty()
@@ -21,13 +20,17 @@ class Portfolio(db.Model):
     description = db.StringProperty(multiline=True)
     date = db.DateTimeProperty(auto_now_add=True)
     link_url = db.StringProperty()
+ #   personal = db.BooleanProperty()
+    status = db.StringProperty() # in-progress, finished(past)  
 
 class MainPage(webapp2.RequestHandler):
     def get(self):       
-        portfolios = db.GqlQuery("SELECT * FROM Portfolio")
-            
+        portfolios = db.GqlQuery("SELECT * FROM Portfolio WHERE status = 'Past'")
+        presents = db.GqlQuery("SELECT * FROM Portfolio WHERE status = 'In Progress'")
+        
         template_values = {
             'portfolios': portfolios,
+            'presents': presents
         }
         
         template = jinja_environment.get_template('index.html')
@@ -57,6 +60,8 @@ class AdminPage(webapp2.RequestHandler):
         portfolio.title = self.request.get('title')		
         portfolio.description = self.request.get('description')
         portfolio.link_url = self.request.get('link_url')
+        portfolio.personal = self.request.get('personal')
+        portfolio.status = self.request.get('status')
         image = self.request.get('img')
         portfolio.image = db.Blob(image)
         portfolio.put()

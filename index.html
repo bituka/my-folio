@@ -30,22 +30,22 @@
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar">Contact</span>
                 </button>
-                <a class="navbar-brand" href="goryofolio.appspot.com">Goryo's Portfolio</a>
+                <a class="navbar-brand" href="/">Goryo's Portfolio</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <!-- <div class="collapse navbar-collapse navbar-ex1-collapse">
+             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#about">About</a>
+               <!--     <li><a href="#about">About</a>
                     </li>
                     <li><a href="#services">Services</a>
-                    </li>
+                    </li> -->
                     <li><a href="#contact">Contact</a>
                     </li>
                 </ul>
-            </div> -->
+            </div> 
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
@@ -60,7 +60,7 @@
             </div>
             
             <div class="col-lg-9 col-md-9">
-                <h1 class="page-header">Sup! I am Goryo and I am a Web Dev</h1>
+                <h1 class="page-header">Sup! I am Goryo</h1>
             </div>
 
         </div>
@@ -74,9 +74,32 @@
             </div>
 
         </div>
+        <h2>Projects in Progress</h2>	
+        {% for present in presents %}   
+        <div class="row">
+          
+            <div class="col-lg-7 col-md-7">
+                <a href="#">
+                    <img class="img-responsive" src="/img?img_id={{portfolio.key()}}" alt={{portfolio.key()}} />
+                </a>
+            </div>
+
+            <div class="col-lg-5 col-md-5">
+                <h3>{{present.title}}</h3>
+              <!--  <h4>Subheading</h4> -->
+                <p>{{present.description}}</p>
+               <!-- <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a> -->
+            </div>
+
+        </div>
+
+        <hr>
+        {% endfor %}	
+      
+        <h2>Past Projects</h2>
         {% for portfolio in portfolios %}   
         <div class="row">
-
+          
             <div class="col-lg-7 col-md-7">
                 <a href="#">
                     <img class="img-responsive" src="/img?img_id={{portfolio.key()}}" alt={{portfolio.key()}} />
@@ -139,7 +162,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Goryo Wala Lang</p>
+                    <p>Copyright &copy; Goryo 2010</p>
                 </div>
             </div>
         </footer>

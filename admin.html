@@ -5,24 +5,31 @@
  </head>
  <body>
  	 <h1>Admin Area</h1>
+   <!--Add Portfolio Entry From -->
    <form action="/admin" enctype="multipart/form-data" method="post">
    <div><label>Title:</label><br /><input type="text" name="title" maxlength="50" /></div>
    <div><label>Description:</label><br /><textarea name="description" rows="4" cols="60"></textarea></div>
    <div><label>Pic:</label><br /><input type="file" name="img"/></div>
    <div><label>URL:</label><br /><input type="text" name="link_url"/></div>
+ <!--  <div><label>Personal Project:</label><br /><input type="radio" name="personal" value="True">Yes<br>
+		<input type="radio" name="personal" value="False">No</div> -->
+   <div><label>Status:</label><br /><input type="radio" name="status" value="Past">Past<br>
+		<input type="radio" name="personal" value="In Progress">In Progress</div>  
    <input type="submit" value="submit">
    </form>
    
+   <!--Edit/Delete Portfolio Entry From and List View-->
    <h1>List</h1>
    {% for portfolio in portfolios %}
    <div><img width="200px" height="200px" src="img?img_id={{portfolio.key()}}" alt={{portfolio.key()}} /></div>
    	<div><a href="{{portfolio.link_url}}">{{portfolio.title}}</a></div>
    	<div>{{portfolio.description}}</div>
-   	
+   	<div>Status: {{portfolio.status}}</div>
+   
+   <!-- Edit / Delete Form -->
    	<form action="/deleteportfolio" method="post">
    	<a href="/editportfolio?id={{portfolio.key()}}">Edit</a>
    	<input type="hidden" name="id" value="{{portfolio.key()}}" />
-   <!--	<a href="/deleteportfolio?id={{portfolio.key()}}">Delete</a> -->
    	<input type="submit" value="Delete">
    	</form>
    {% endfor %}
