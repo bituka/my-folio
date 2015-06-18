@@ -82,10 +82,10 @@ class EditPortfolio(webapp2.RequestHandler):
     def post(self):
 
         portfolio = db.get(self.request.get('id'))
-
         portfolio.title = self.request.get('title')        
         portfolio.description = self.request.get('description')
         portfolio.link_url = self.request.get('link_url')
+        portfolio.status = self.request.get('status')
         image = self.request.get('img')
         if image:
             portfolio.image = db.Blob(image)
