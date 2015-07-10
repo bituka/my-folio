@@ -46,3 +46,14 @@ footer {
 #mainimg{
   height:10%;
 }
+
+h1{
+    color: #51BE95;
+}
+
+.msg{
+    padding: 20px;
+    font-size: large;
+    color: red;
+    display: none;
+}
