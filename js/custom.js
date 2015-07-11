@@ -22,6 +22,10 @@ $(".btn").click(function() {
         success: function(results) {
             $("p.msg").text(results);
             $(".msg").show();
+            
+            if (results === "Message sent!"){
+                $('#myform')[0].reset();
+            }
             console.log(results);
             console.log('finished');	
             // alert('success');   
