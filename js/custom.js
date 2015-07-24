@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(".btn").click(function() {  
+    $(".btn-lg").click(function() {  
         return false; 
     });
     
@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 var $form = $('form');
 
-$(".btn").click(function() {  
+$(".btn-lg").click(function() {  
     $.ajax({
         type: "POST",  
         url: "messageme",  

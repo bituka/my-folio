@@ -51,7 +51,7 @@ Message: %s
                 self.response.out.write("Message sent!")
             except:
                 e = sys.exc_info()[0]
-                self.response.out.write("Error sending the message " + e)
+                self.response.out.write("Error sending the message. Please send an email to goryo.webdev@gmail.com" + e)
                 
 app = webapp2.WSGIApplication([('/messageme', MessageMe), ],
                                 debug=True)
