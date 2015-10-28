@@ -4,10 +4,18 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
+builtins:
+- deferred: on
+
 handlers:
 
 #- url: /
 #  script: goryofolio.app
+
+- url: /update_schema
+  script: update_schema_handler.app  # path to webapp2 application definition.
+  login: admin
+  secure: always
 
 - url: /stylesheets
   static_dir: stylesheets
@@ -20,6 +28,9 @@ handlers:
 
 - url: /testpaginggyo
   script: testpaginggyo.app
+
+- url: /messageme
+  script: messageme.app
 
 - url: /.*
   script: goryofolio.app

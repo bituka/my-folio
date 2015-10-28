@@ -40,20 +40,23 @@ class AdminPage(webapp2.RequestHandler):
     def get(self):       
         
         user = users.get_current_user()
+        
         if (user and user.nickname() == 'goryo.webdev'):
-
+             
             portfolios = db.GqlQuery("SELECT * FROM Portfolio")
-            
+
             template_values = {
-                'portfolios': portfolios,
+               'portfolios': portfolios,
             }
-            
+
             template = jinja_environment.get_template('admin.html')
             self.response.out.write(template.render(template_values))	
+        
+        
         else:
             
             self.redirect(users.create_login_url(self.request.uri))
-
+        
         
     def post(self):   
         portfolio = Portfolio()
@@ -82,10 +85,10 @@ class EditPortfolio(webapp2.RequestHandler):
     def post(self):
 
         portfolio = db.get(self.request.get('id'))
-
         portfolio.title = self.request.get('title')        
         portfolio.description = self.request.get('description')
         portfolio.link_url = self.request.get('link_url')
+        portfolio.status = self.request.get('status')
         image = self.request.get('img')
         if image:
             portfolio.image = db.Blob(image)
@@ -108,12 +111,27 @@ class Image(webapp2.RequestHandler):
         else:
             self.error(404)   
             
+            
+            
+            
+'''            
+class MessageMe(webapp2.RequestHandler):
+    def post(self):
+        portfolio = db.get(self.request.get('img_id'))
+        
+        if portfolio.image:
+            self.response.headers['Content-Type'] = 'image/png'
+            self.response.out.write(portfolio.image)
+        else:
+            self.error(404)   
+            
 '''
 class Test(webapp2.RequestHandler):
   
     def get(self):
         self.response.out.write('test') 
-'''
+        
+
 
 app = webapp2.WSGIApplication([('/', MainPage),
                                 ('/img', Image),
@@ -121,5 +139,5 @@ app = webapp2.WSGIApplication([('/', MainPage),
                                 ('/deleteportfolio', DeletePortfolio),
                                 ('/admin', AdminPage), ],
                                 debug=True)
-                              
-                              
+
+
